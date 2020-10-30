@@ -1,0 +1,58 @@
+/* Deanna Brockert */
+@font-face {
+    font-family: 'quicksandregular';
+    src: url('quicksand-regular-webfont.woff2') format('woff2'),
+         url('quicksand-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+#outerwrapper {
+    width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+} 
+
+body{
+    background-color: #b8d1eb;
+    color: #000000;
+    font-family: 'Times New Roman', Times, serif;
+}
+nav ul{
+    list-style: none;
+}
+h1{
+    font-family: 'Righteous', cursive;
+    font-size: 3em;
+}
+h2{
+    font-family: 'quicksandregular', 'Times New Roman', serif;
+    font-weight: normal;
+    font-style: italic;
+}
+main ul{
+    list-style-image: url(../images/tomatoEdit.png);
+}
+
+.floatleft { 
+    float: left;
+    margin-right: 3%;
+}
+
+.floatright {
+    float: right;
+    margin-left: 3%;
+}
+
+main{ 
+    clear: both;
+    background-color: #c5a98b;
+    padding: 10px;
+}
+footer{
+    clear: both;
+    background-color: #745d44;
+    padding: 10px 0px;
+    font-size: .75em;
+    text-align: center;
+}

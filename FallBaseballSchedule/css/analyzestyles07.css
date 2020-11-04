@@ -1,0 +1,94 @@
+/* Style sheet created by: Deanna Brockert, November 4th, 2020 */
+
+/* Style for body specifies a background color */
+body {
+	background-color: #FFFFFF;
+}
+
+/* Style for main element */
+main{
+	display: block;
+	padding: 1em;
+	background-color: #4e9657;
+}
+
+/* Style for section element */
+section{
+	background-color: white;
+	color: #4e9657;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+/* Style for article elements */
+article{
+	color: black;
+	border-top: thin;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+/* Style for asside element */
+aside{
+	border-radius: 2em;
+	background-color: #4e9657;
+	text-align: center;
+	color: white;
+	font-size: x-large;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+/* Style for the container element */
+#container {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Style for the header element */
+header {
+	font-family: Verdana, Arial, sans-serif;
+	background-color: #FFFFFF;
+	color: #4E9657;
+	padding: 0.5%;
+	margin-left: 1%;
+	font-size: 3em;
+} 
+
+/* Style for footer element */
+footer{
+	text-align: center;
+	font-size: .70em;
+}
+
+/* Style for H3 element */
+h3{
+	text-align: center;
+}
+
+/* Style for the nav element */
+nav {
+	padding: 0.5%;
+}
+
+/* Style for the nav list item elements */
+nav li {
+	display: inline;
+}
+
+/* Style for the nav links element */
+nav li a {
+	color: #4E9657;
+	padding-left: 2%;
+	padding-right: 2%;
+	text-decoration: none;
+}
+/* Style for the table */
+table{
+  width: 100%;
+}
+td, th {
+	border: 1px solid black;
+}
+

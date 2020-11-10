@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--- HTML Template -->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="author" content="Instructor">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="Description" content="Practice Creating a SVG image in a web page">
+		<title>SVG Tutorial</title>
+
+</head>
+<img src="image/maroonsquare.svg">
+
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+	<!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+	<g class="layer">
+	 <title>Layer 1</title>
+	 <rect fill="#7f003f" height="222" id="svg_1" stroke="#000000" stroke-opacity="0" stroke-width="5" width="222" x="214.55113" y="117.73295"/>
+	</g>
+   </svg>
+
+
+
+<body>
+  <!-- SVG Tutorial Option 1 using img tag -->
+  <img src="image/hello.svg">;
+  
+  <!-- SVG Tutorial Option 2 embedding XML code -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 180">
+	  <rect width="300" height="180" fill="purple" rx="20" ry="20"/>
+	  <text x="40" y="114" fill="yellow" font-family="'Verdana-Bold'" font-size="72">
+		hello!
+	  </text>
+  </svg>
+  
+  <!-- Coming Attractions, Chapter 10 object tag -->
+  <!-- Demonstration only - student is not required to do this -->
+	<object type="image/svg+xml" data="hello.svg">
+	  <img src="image/hello.png" alt="welcome greeting">
+	</object>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+/*Deanna Brockert, November, 2020*/
+
+@font-face {
+    font-family: 'josefin_sanslight';
+    src: url('../fonts/josefinsans-light-webfont.woff2') format('woff2'),
+         url('../fonts/josefinsans-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'bubbler_oneregular';
+    src: url('../fonts/bubblerone-regular-webfont.eot');
+    src: url('../fonts/bubblerone-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bubblerone-regular-webfont.woff2') format('woff2'),
+         url('../fonts/bubblerone-regular-webfont.woff') format('woff'),
+         url('../fonts/bubblerone-regular-webfont.ttf') format('truetype'),
+         url('../fonts/bubblerone-regular-webfont.svg#bubbler_oneregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+html{
+    background-color: #cdf7ecfb;
+
+}
+nav ul{
+    font-family: 'bubbler_oneregular', Times, serif;
+    font-size: 1.5em;
+    list-style: none;
+    color: rgba(255, 255, 255, 0.877);
+    padding-right: 60px;
+    text-align: right;
+    background-color: #84dcc6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+nav li{
+    display: inline;
+    padding-right: 70px;
+    clear: right;
+    color: #1A1423;
+}
+li.navname{
+    font-family: 'Sacramento', cursive, serif;
+}
+.navname a{
+    text-decoration: none;
+}
+
+/*Style for Nav Links*/
+nav a:link{
+    color: #1A1423;
+}
+nav a:hover{
+    color: #13b9a3;
+}
+nav a:visited{
+    color: #012b29;
+}
+nav a:active{
+    color: #13b9a3;
+}
+
+/*Style for Footer Links*/
+footer a:link{
+    color: white;
+}
+footer a:hover{
+    color: #13b9a3;
+}
+footer a:visited{
+    color: #012b29;
+}
+
+.navname{
+    padding-left: 60px;
+    float: left;
+    font-family: 'bubbler_oneregular', Times, serif;
+}
+#image-stack{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.scribble{
+    grid-column: 3 / span 6;
+    grid-row: 1;
+    padding-top: 20%;
+    z-index: 1;
+    height: 300px;
+    width: 450px;
+    border-radius: 5%;
+}
+.smudge{
+    grid-column: 2 / -3;
+    grid-row: 1;
+    height: 300px;
+    width: 450px;
+    border-radius: 5%;
+}
+.profile-picture{
+    float: right;
+    height: 400px;
+    grid-column: 9 / -1;
+    grid-row: 1;
+    border-radius: 5%;
+}
+h1{
+    font-family: 'josefin_sanslight', 'Times New Roman', serif;
+    text-align: center;
+    padding-top: 20px;
+    color: #ffa69e;
+}
+.text{
+    font-family: 'josefin_sanslight', 'Times New Roman', serif;
+    text-align: center;
+    font-size: 1.5em;
+}
+footer{
+    text-align: center;
+    color: white;
+    font-family: 'josefin_sanslight', 'Times New Roman', serif;
+    background: #313131;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.rescue-overview{
+    font-family: 'josefin_sanslight', 'Times New Roman', serif;
+    text-align: center;
+}
+.fosterpictures{
+    display: table;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+/*Feedback Tab Styling*/
+h2{
+    font-family: 'josefin_sanslight', 'Times New Roman', serif;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+hr{
+    width: 70%;
+    margin-top: 30px;
+    color: #ffa69e;
+}
+.formcontainer{
+    font-family: 'josefin_sanslight', 'Times New Roman', serif;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+.checkboxes li{
+    list-style-type: none;
+}
+.contactinfo{
+    width: 400px;
+}

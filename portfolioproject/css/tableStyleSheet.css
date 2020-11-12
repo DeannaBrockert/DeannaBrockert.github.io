@@ -1,0 +1,27 @@
+/*Deanna Brockert, November, 2020*/
+
+table{
+    font-family: 'Caudex', Times, serif;
+    width: 100%;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+table td, th{
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    padding: 5px;
+}
+caption{
+    font-size: 1.5em;
+}
+table thead{
+    background-color: #187e64;
+}
+table td:first-child{
+    background-color: #187e64;
+}

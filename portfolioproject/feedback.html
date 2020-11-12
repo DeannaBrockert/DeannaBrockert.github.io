@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Created by: Deanna Brockert, November, 2020 -->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="description" content="Deanna Brockert's personal porfolio project">
+    <meta name="keywords" content="Deanna, portfolio, GitHub">
+    <meta name="author" content="Deanna Brockert">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caudex&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/portfolioStyleSheet.css">
+	<title>Portfolio Feedback</title>
+</head>
+    <header>
+        <nav>
+            <ul>
+            <li class="navname"><a href="index.html">Deanna Brockert</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rescue.html">Rescue Work</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+<main>
+    <h2>If you have comments or suggestions on how to improve my portfolio,
+        <br>please fill out the form below!
+    </h2><hr>
+<div class="formcontainer">
+<form class="feedbackform" action="mailto:deannabrockert@my.cwi.edu?subject=PersonalPortfolioForm" id="feedback" method="post" name="feedback">
+    <fieldset class="contactinfo">
+        <legend>Contact Information</legend>
+        <label for="full-name">Enter full name</label>
+        <input type="text" name="full-name" id="full-name"><br><br>
+        <label for="email">Enter e-mail address</label>
+        <input type="text" name="email" id="email">
+    </fieldset><br>
+    <p>Select which aspects you like most about this portfolio.<br><em>(Can select more than one)</em></p>
+    <ul class="checkboxes">
+        <li><label><input type="checkbox" name="likes" value="font">Font choice</label></li>
+        <li><label><input type="checkbox" name="likes" value="color">Color palette</label></li>
+        <li><label><input type="checkbox" name="likes" value="layout">Layout</label></li>
+        <li><label><input type="checkbox" name="likes" value="photos">Photos</label></li>
+    </ul><br>
+    <p>Which aspect do you think needs the most improvment?</p>
+    <select name="dislike">
+        <option>Font choice</option>
+        <option>Color palette</option>
+        <option>Layout</option>
+        <option>Photos</option>
+    </select><br><br><br><br><br>
+    <label for="comments">Enter comments & suggestions you have for my online portfolio.</label><br>
+    <textarea name="comments" id="comments" placeholder="100 words or less" maxlength="500" rows="7" cols="50"></textarea><br><br><br>
+    <input type="submit"><br><br>
+</form>
+</div>
+</main>    
+<footer>
+    <p>Contact:<br></p>
+    <p><a href="mailto:deannabrockert@gmail.com">deannabrockert@gmail.com</a></p>
+    <p><a href="tel:+12089910664">208-991-0664</a></p>
+    <a href="https://www.linkedin.com/in/deanna-brockert-6593b0130/" target="_blank"><img src="images/linkedinicon.png" alt="linkedin icon"></a>
+    <a href="https://github.com/DeannaBrockert" target="_blank"><img src="images/githubicon.png" alt="github icon"></a>
+</footer>

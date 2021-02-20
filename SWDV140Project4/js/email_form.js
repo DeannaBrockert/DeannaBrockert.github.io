@@ -12,6 +12,7 @@
     1/30/21: Continued to work on faq section
     1/31/21: Finished faq section
     2/15/21: Moved faq to seperate js file. 
+    2/19/21: Added code to clear span elements with "Clear" button.
 
 ******************************************************************** */
 
@@ -66,6 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
         $("#email_1").value = "";
         $("#email_2").value = "";
         $("#name").value = "";
+
+        $("#email_1").nextElementSibling.textContent = "";
+        $("#email_2").nextElementSibling.textContent = "";
+        $("#name").nextElementSibling.textContent = "";
 
         $("#email_1").focus();
     });

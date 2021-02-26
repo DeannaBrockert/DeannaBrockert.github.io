@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!----------------------------------------------------------------------------------------------------------------
+
+#Original Author: Deanna Brockert                                       
+#Date Created: 2/25/21                                       
+#Version:                                                  
+#Date Last Modified: 2/25/21                                
+#Modified by: Deanna Brockert                                           
+#Modification log: 
+
+    2/24/21: Created the file and added link to Picnicss library. Added a modal and simple form from Picnicss.
+
+ 
+------------------------------------------------------------------------------------------------------------------>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content=""/>
+        <meta name="author" content="Deanna Brockert" />
+        <title>Lab 06</title>
+
+        <!--AOS Link-->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="styles.css">
+
+    </head>
+
+    <header>
+        <h1 class="animoGradientText">The Icon Show</h1>
+    </header>
+
+    <body>
+
+        <div id="container">
+        <div data-aos="zoom-in"><img src="images/chef.png"></div>
+       <p class="fade">Welcome! I am "The Chef". Come visit the Icon Show!</p>
+        <div data-aos="zoom-out-down"><img src="images/cat.png"></div>
+        <p class="fade">Meow, I am "The Cat."</p>
+
+        <button id="hide">Hide</button>
+        <button id="show">Show</button>
+        </div> <!-- End Container -->
+
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+          AOS.init();
+        </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $("p").hide();
+  });
+  $("#show").click(function(){
+    $("p").show();
+  });
+});
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!----------------------------------------------------------------------------------------------------------------
+
+#Original Author: Deanna Brockert                                       
+#Date Created: 2/24/21                                       
+#Version:                                                  
+#Date Last Modified: 2/24/21                                
+#Modified by: Deanna Brockert                                           
+#Modification log: 
+
+    2/24/21: Created the file and added link to Picnicss library. Added a modal and simple form from Picnicss.
+    2/25/21: Added bootstrap CSS file and created nav bar and about section. 
+    2/26/21: Added Projects and Contact sections and attempted to add js to contact form.
+
+ 
+------------------------------------------------------------------------------------------------------------------>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content=""/>
+        <meta name="author" content="Deanna Brockert" />
+        <title>Deanna Brockert's Portfolio</title>
+
+        <!-- Picnicss Library-->    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+
+        <!-- AOS Library -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="css/styles.css">
+     
+    </head>
+    <body>
+
+        <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="index.html">Deanna Brockert</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav> 
+      <!-- End Navigation -->
+
+      <!-- About Section -->
+      <section id="about">
+        <div class="col-lg-12">
+        <div class="jumbotron">
+            <div data-aos="fade-down"><h1 class="display-3">Welcome!</h1></div>
+            <p class="lead">My name is Deanna Brockert and welcome to my personal portfolio. </p>
+            <hr class="my-4">
+            <p>If you are interested in seeing more of my projects, click the button to be taken to my GitHub account.</p>
+            <p class="lead">
+            <a class="btn btn-primary btn-lg" href="https://github.com/DeannaBrockert/DeannaBrockert.github.io" target="_blank" role="button">Github</a>
+            </p>
+        </div>
+        </div>
+    </section>
+    <!-- End About -->
+    
+    <!-- Projects Section -->
+    <section id="projects">
+
+        <div class="card mb-3">
+            <h3 class="card-header">Projects</h3>
+            <div class="card-body">
+              <h5 class="card-title">During my time learning software development, I have created a variety of small projects.  </h5>
+              <h6 class="card-subtitle text-muted">Here is selection of what I have created. </h6>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+              <rect width="100%" height="100%" fill="#868e96"></rect>
+              <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+            </svg>
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+    </section>
+    <!-- End Projects -->
+
+    <!-- Contact Section -->
+    <section id="contact"> 
+        <form id="contact_form">
+
+              <legend>Contact Me!</legend>
+              <div class="form-group">
+
+                <label for="contact_email">Email address</label>
+                <input type="text" class="form-control" id="contact_email" aria-describedby="emailHelp" placeholder="example@example.com">
+                <span></span>
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="contact_phone">Phone Number</label>
+                <input type="text" class="form-control" id="contact_phone" placeholder="XXX-XXX-XXXX">
+
+              </div>
+
+              <button type="submit" id="contact_submit" name="contact_submit" class="btn btn-primary">Submit</button>
+
+        </form>
+    </section>
+
+      <!-- AOS Plugin -->
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+      <script>
+        AOS.init();
+      </script>
+      <script src="js/script.js"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script> 
+      
+    </body>
+</html>

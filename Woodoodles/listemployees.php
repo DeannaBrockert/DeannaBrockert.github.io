@@ -2,30 +2,14 @@
 /* * ****************************************************************** 
  * Date         Name          Description
  * ---------------------------------------
- * 9/3/21      Deanna B       Initial depolyment of thank you page. 
- * 9/17/21     Deanna B       Use database class and visit functions. 
+ * 9/17/21      Deanna B       Initial depolyment of listemployees page. 
  * 
- * ********************************************************************/
-    
-    $name = filter_input(INPUT_POST, 'name');
-    $email = filter_input(INPUT_POST, 'email');
-    $message = filter_input(INPUT_POST, 'message');
-    /* echo "Fields: " . $visitor_name . $visitor_email . $visitor_msg;  */
-    
-    // Validate inputs
-    if ($name == null || $email == null || $message == null) {
-        $error = "Invalid input data. Check all fields and try again.";
-        /* include('error.php'); */
-        echo "Form Data Error: " . $error; 
-        exit();
-        } else {
+ * ******************************************************************* */
 
-            require_once('./model/database.php');
-            require_once('./model/contact.php');
-            addContact($name, $email, $message);
+require_once('./model/database.php');
+require_once('./model/employee.php');
 
-}
-
+$employees = EmployeeDB::getEmployees();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,18 +67,28 @@
             </div>
         </header>
 
-        <h2>Thank you, <?php echo $name; ?>, for contacting me! I will get back to you shortly.</h2>
-        <!-- Footer-->
-        <footer class="bg-light py-5">
-            <div class="container"><div class="small text-center text-muted">Copyright © 2020 - Deanna Brockert</div></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Third party plugin JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+        <h2 class="text-muted text-center mt-4">Employee List</h2>
+
+        <p>
+        <ul class="list-group-item list-group">
+            <?php foreach ($employees as $employee) : ?>
+                <li class="ml-auto"><?php echo $employee->getLastName() . ', ' . $employee->getFirstName(); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </p>
+
+
+    <!-- Footer-->
+    <footer class="bg-light py-5">
+        <div class="container"><div class="small text-center text-muted">Copyright © 2020 - Deanna Brockert</div></div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
 </html>

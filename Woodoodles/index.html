@@ -32,6 +32,8 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#recent">Recent</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="admin.php">Admin</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="listemployees.php">Employees</a></li>
                     </ul>
                 </div>
             </div>
@@ -62,7 +64,7 @@
                         <p class="text-white mb-4">My name is Amanda Mitchell.<br>I am a proud Idahoan! #idahome<br>My art and poetry are evolving creative outlets,<br> 
                             pushing myself to find what sets my soul on fire.<br> I am excited to share this adventure with you.<br> Thank you for all the support as I grow my art and my business,<br>
                             and I hope you can let go of whatever fears you have of sharing your own creations with the world.
-                    
+
                     </div>
                 </div>
             </div>
@@ -108,45 +110,45 @@
 
         <!-- Recent -->
         <section id="recent">
-        <div class="pb-5">
-            <h2 class="text-center mb-4">Most Recent Project <span class="badge badge-secondary">New</span></h2>
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="images/fullsize/poe-earrings-pair.jpg" class="d-block w-50 m-auto" alt="edgar allen poe earrings">
-                <div class="carousel-caption d-none d-md-block text-dark">
-                  <p>Edgar Allen Poe Earrings</p>
+            <div class="pb-5">
+                <h2 class="text-center mb-4">Most Recent Project <span class="badge badge-secondary">New</span></h2>
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/fullsize/poe-earrings-pair.jpg" class="d-block w-50 m-auto" alt="edgar allen poe earrings">
+                            <div class="carousel-caption d-none d-md-block text-dark">
+                                <p>Edgar Allen Poe Earrings</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/fullsize/poe-earring-protrait.jpg" class="d-block w-50 m-auto" alt="edgar allen poe portrait earring">
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>Edgar Allen Poe Portrait</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/fullsize/poe-earring-raven.jpg" class="d-block w-50 m-auto" alt="raven earring">
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>Raven</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
                 </div>
-              </div>
-              <div class="carousel-item">
-                <img src="images/fullsize/poe-earring-protrait.jpg" class="d-block w-50 m-auto" alt="edgar allen poe portrait earring">
-                <div class="carousel-caption d-none d-md-block">
-                  <p>Edgar Allen Poe Portrait</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img src="images/fullsize/poe-earring-raven.jpg" class="d-block w-50 m-auto" alt="raven earring">
-                <div class="carousel-caption d-none d-md-block">
-                  <p>Raven</p>
-                </div>
-              </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </a>
-          </div>
-        </div>
-    </section>
+        </section>
 
         <!-- Portfolio-->
         <div id="portfolio">
@@ -232,20 +234,20 @@
 
                 <div class="mt-5">
                     <form action="thankyou.php" method="post" >
-                    <div class="form-group">
-                      <label for="nameInput">Name</label>
-                      <input type="text" class="form-control" id="nameInput" name="name" placeholder="Enter name">
-                    </div>
-                    <div class="form-group">
-                      <label for="emailInput">Email</label>
-                      <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="messageInput">Enter message</label>
-                        <textarea class="form-control" id="messageInput" name="message" rows="3"></textarea>
-                      </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
+                        <div class="form-group">
+                            <label for="nameInput">Name</label>
+                            <input type="text" class="form-control" id="nameInput" name="name" placeholder="Enter name">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailInput">Email</label>
+                            <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="messageInput">Enter message</label>
+                            <textarea class="form-control" id="messageInput" name="message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </section>

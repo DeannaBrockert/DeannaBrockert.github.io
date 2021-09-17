@@ -1,16 +1,15 @@
 <?php
-$dsn = 'mysql:host=localhost;dbname=woodoodles';
-$username = 'woodoodles_user';   //'ej_user';
-$password = 'Pa$$w0rd';
+/* * ****************************************************************** 
+ * Date         Name          Description
+ * ---------------------------------------
+ * 9/10/21      Deanna B       Initial depolyment of admin page. 
+ * 9/17/21      Deanna B       Use database class, employee and visit functions. 
+ * 
+ * ******************************************************************* */
 
-try {
-    $db = new PDO($dsn, $username, $password);
-} catch (PDOException $e) {
-    $error_message = $e->getMessage();
-    /* include('database_error.php'); */
-    echo "DB Error: " . $error_message;
-    exit();
-}
+require_once('./model/database.php');
+require_once('./model/employee.php');
+require_once('./model/contact.php');
 
 //Check action. On initial load it is null
 $action = filter_input(INPUT_POST, 'action');
@@ -24,43 +23,23 @@ if ($action == null) {
 if ($action == 'list_contacts') {
 
 //see if employee is set
-$employee_id = filter_input(INPUT_GET, 'employee_id', FILTER_VALIDATE_INT);
-if ($employee_id == null || $employee_id == false) {
-    $employee_id = 1;
-}
+    $employee_id = filter_input(INPUT_GET, 'employee_id', FILTER_VALIDATE_INT);
+    if ($employee_id == null || $employee_id == false) {
+        $employee_id = 1;
+    }
 
-try{
-// Get visit info for employee
-$queryEmployee = 'SELECT * FROM employee';
-$statement1 = $db->prepare($queryEmployee);
-$statement1->execute();
-$employees = $statement1;
+    try {
 
-$query2 = 'SELECT contact_id, contact.name, contact.email_address, contact.message, contact.contact_date
-FROM contact
-JOIN employee on contact.employee_id = employee.employee_id
-WHERE employee.employee_id = :employee_id
-ORDER BY contact_date';
-$statement2 = $db->prepare($query2);
-$statement2->bindValue(':employee_id', $employee_id);
-$statement2->execute();
-$contacts = $statement2;
-
-} catch (PDOException $e){
-    echo 'Error: ' . $e->getMessage();
-}
-
+        $employees = EmployeeDB::getEmployeeList();
+        $contacts = getVisitByEmp($employee_id);
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
 } else if ($action == 'delete_contact') {
-    $contact_id = filter_input(INPUT_POST, 'contact_id', FILTER_VALIDATE_INT);
-    $query = 'DELETE FROM contact
-WHERE contact_id = :contact_id';
-    $statement = $db->prepare($query);
-    $statement->bindValue(':contact_id', $contact_id);
-    $statement->execute();
-    $statement->closeCursor();
-    header("Location: admin.php");
-} 
+    delContact($contact_id);
 
+    header("Location: admin.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,6 +75,8 @@ WHERE contact_id = :contact_id';
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#recent">Recent</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="admin.php">Admin</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="listemployees.php">Employees</a></li>
                     </ul>
                 </div>
             </div>
@@ -121,15 +102,15 @@ WHERE contact_id = :contact_id';
         <aside>
             <ul style="list-style-type: none">
                 <?php foreach ($employees as $employee) : ?>
-                <li>
-                    <a href="?employee_id=<?php echo $employee['employee_id'];?>">
-                        <?php echo $employee['first_name'] . ' ' . $employee['last_name']?>
-                    </a>
-                </li>
+                    <li>
+                        <a href="?employee_id=<?php echo $employee['employee_id']; ?>">
+                            <?php echo $employee['first_name'] . ' ' . $employee['last_name'] ?>
+                        </a>
+                    </li>
                 <?php endforeach; ?>
             </ul>
         </aside>
-        
+
         <table>
             <tr>
                 <th>Name</th>
@@ -138,21 +119,21 @@ WHERE contact_id = :contact_id';
                 <th>Date</th>
                 <th></th>
             </tr>
-            <?php foreach($contacts as $contact) : ?>
-            <tr>
-                <td><?php echo $contact['name']; ?></td>
-                <td><?php echo $contact['email_address']; ?></td>
-                <td><?php echo $contact['message']; ?></td>
-                <td><?php echo $contact['contact_date']; ?></td>
-                <td>
-                    <form action="admin.php" method="post">
-                        <input type="hidden" name="action" value="delete_contact">
-                        <input type="hidden" name="contact_id" 
-                               value="<?php echo $contact['contact_id']; ?>">
-                        <input type="submit" value="Delete">
-                    </form>
-                </td>
-            </tr>
+            <?php foreach ($contacts as $contact) : ?>
+                <tr>
+                    <td><?php echo $contact['name']; ?></td>
+                    <td><?php echo $contact['email_address']; ?></td>
+                    <td><?php echo $contact['message']; ?></td>
+                    <td><?php echo $contact['contact_date']; ?></td>
+                    <td>
+                        <form action="admin.php" method="post">
+                            <input type="hidden" name="action" value="delete_contact">
+                            <input type="hidden" name="contact_id" 
+                                   value="<?php echo $contact['contact_id']; ?>">
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                </tr>
             <?php endforeach; ?>
         </table>
 

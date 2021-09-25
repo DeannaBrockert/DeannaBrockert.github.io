@@ -1,0 +1,24 @@
+<?php
+/************************************************************************** 
+ * Date     Name        Description
+ * -------- ----------- ---------------------------------------------------
+ * 9/22/21  Deanna B    Initial deployment of authentication.
+ * 
+ *************************************************************************/
+require_once('model/database.php');
+require_once('model/admin_db.php');
+
+$email = '';
+$password = '';    
+if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
+    $email = $_SERVER['PHP_AUTH_USER'];
+    $password = $_SERVER['PHP_AUTH_PW'];    
+}
+
+if (!is_valid_admin_login($email, $password)) {
+    header('WWW-Authenticate: Basic realm="Admin"');
+    header('HTTP/1.0 401 Unauthorized');
+    include('error.php');
+    exit();
+}
+?>

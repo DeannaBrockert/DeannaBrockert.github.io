@@ -4,10 +4,13 @@
  * ---------------------------------------
  * 9/10/21      Deanna B       Initial depolyment of admin page. 
  * 9/17/21      Deanna B       Use database class, employee and visit functions. 
+ * 9/23/21      Deanna B       Initial deployment of authentication and secure connection. 
  * 
  * ******************************************************************* */
 
 require_once('./model/database.php');
+require_once('./util/secure_conn.php');
+require_once('./util/valid_admin.php');
 require_once('./model/employee.php');
 require_once('./model/contact.php');
 
@@ -33,6 +36,7 @@ if ($action == 'list_contacts') {
         $employees = EmployeeDB::getEmployeeList();
         $contacts = getVisitByEmp($employee_id);
     } catch (PDOException $e) {
+        include('error.php');
         echo 'Error: ' . $e->getMessage();
     }
 } else if ($action == 'delete_contact') {
@@ -66,15 +70,15 @@ if ($action == 'list_contacts') {
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">woodoodles</a>
+                <a class="navbar-brand js-scroll-trigger" href="index.html">woodoodles</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#details">Details</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#recent">Recent</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">Details</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">Recent</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">Contact</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="admin.php">Admin</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="listemployees.php">Employees</a></li>
                     </ul>
@@ -96,9 +100,19 @@ if ($action == 'list_contacts') {
                 </div>
             </div>
         </header>
+        
+        <section class="page-section bg-primary" id="about">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="text-white mt-0">Admin</h2>
+                        <hr class="divider light my-4" />
+                        <p class="text-white mb-4">Select an employee to view messages.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <h1 class="container text-center">Admin</h1>
-        <h3>Select an employee to view messages</h3>
         <aside>
             <ul style="list-style-type: none">
                 <?php foreach ($employees as $employee) : ?>

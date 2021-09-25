@@ -22,7 +22,8 @@ class Database {
                                      self::$password);
             } catch (PDOException $e) {
                 $error_message = $e->getMessage();
-                include('../errors/database_error.php');
+                //include('../errors/database_error.php');
+                echo 'Error connecting with ' . self::$username;
                 exit();
             }
         }

@@ -4,6 +4,7 @@
 * 10/8/21	DBrockert		Initial implementation of media db.
 * 10/14/21	DBrockert		Fixed typo on status table, changed CHAR(10) to NCHAR(60), started insert statements.
 * 10/15/21	DBrockert		Added and ran insert statements. 
+* 10/22/21	DBrockert		Add sql for reports. 
 *
 ***************************************************************/
 
@@ -56,12 +57,12 @@ phone_number				CHAR(60)		NOT NULL);
 
 create table artist
 (artist_id					INT				NOT NULL IDENTITY PRIMARY KEY,
-artist_name					NCHAR(60)		NOT NULL,
+artist_name					NVARCHAR(60)		NOT NULL,
 artist_type_id				INT				NOT NULL references artist_type (artist_type_id));
 
 create table media 
 (media_id					INT				NOT NULL IDENTITY PRIMARY KEY,
-media_name					NCHAR(60)		NOT NULL,
+media_name					NVARCHAR(60)		NOT NULL,
 release_date				DATE			NOT NULL, 
 media_type_id				INT				NOT NULL references media_type (media_type_id),
 status_id					INT				NOT NULL references status (status_id),
@@ -229,4 +230,95 @@ select *
 from media_has_borrower
 where return_date = NULL;
 
-select * from media_has_borrower;
+select * from artist;
+
+
+-- Project 4 queries
+
+use mediaInventoryDBrockert;
+
+
+-- #3
+select media_name as 'Media Name', release_date as 'Release Date', 
+	iif(charindex(' ', artist_name) > 0, left(artist_name, charindex(' ', artist_name)), artist_name) as 'First Name',
+	iif(charindex(' ', artist_name) > 0, right(artist_name, len(artist_name) - charindex(' ', artist_name)), '') as 'Last Name',
+	charindex(' ', artist_name),
+	len(artist_name) 
+from media 
+join media_has_artist on media.media_id = media_has_artist.media_id
+join artist on artist.artist_id = media_has_artist.artist_id
+where artist_type_id = 1
+order by 'Last Name';
+
+
+
+
+-- #4
+drop view if exists View_Individual_Artist;
+go
+
+create view View_Individual_Artist as 
+	select artist_id, artist_name
+	from artist
+	where artist_type_id = 1
+go
+select artist_name
+from View_Individual_Artist
+
+
+
+
+-- #5
+select media_name as 'Media Name', release_date as 'Release Date', artist_name as 'Group Name'
+from media
+join media_has_artist on media.media_id = media_has_artist.media_id
+join artist on artist.artist_id = media_has_artist.artist_id
+where artist_type_id = 2
+order by 'Group Name';
+go
+
+
+
+
+-- #6
+select media_name as 'Media Name', release_date as 'Release Date', artist_name as 'Group Name'
+from media
+join media_has_artist on media.media_id = media_has_artist.media_id
+join artist on artist.artist_id = media_has_artist.artist_id
+where not exists
+	(select *
+	from View_Individual_Artist
+	where artist_type_id = 1)
+order by 'Group Name';
+go
+
+
+
+
+-- #7
+select first_name as 'First Name', last_name as 'Last Name', media_name as 'Media Name', borrow_date as 'Borrow Date', return_date as 'Return Date'
+from media
+join media_has_borrower on media.media_id = media_has_borrower.media_id
+join borrower on borrower.borrower_id = media_has_borrower.borrower_id
+order by 'Last Name';
+
+
+
+
+-- #8
+select media.media_id as 'Media ID', media_name as 'Media Name', count(*) as 'Times Borrowed'
+from media
+join media_has_borrower on media.media_id = media_has_borrower.media_id
+group by media_has_borrower.media_id, media.media_id, media.media_name
+order by 'Media ID'
+go
+
+
+
+-- #9
+select media_name as 'Media Name', borrow_date as 'Borrow Date', return_date as 'Return Date', last_name as 'Last Name'
+from media_has_borrower
+join media on media.media_id = media_has_borrower.media_id
+join borrower on borrower.borrower_id = media_has_borrower.borrower_id
+where return_date is null
+order by 'Last Name';

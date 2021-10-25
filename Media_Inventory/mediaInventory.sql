@@ -322,3 +322,58 @@ join media on media.media_id = media_has_borrower.media_id
 join borrower on borrower.borrower_id = media_has_borrower.borrower_id
 where return_date is null
 order by 'Last Name';
+
+
+
+--Week 5 Day 1 Lab
+
+-- #1
+drop proc if exists sp_ins_media_has_borrower
+go
+create proc sp_ins_media_has_borrower
+	@media_id int, @borrower_id int, @borrow_date datetime2,
+	@return_date datetime2 = null
+as 
+begin try
+	insert into media_has_borrower
+	(media_id, borrower_id, borrow_date, return_date)
+	values
+	(@media_id, @borrower_id, @borrow_date, @return_date);
+end try
+begin catch
+	print 'An error occured. Row was not inserted.';
+	print 'Error number: ' + convert(varchar, error_number());
+	print 'Error message: ' + convert(varchar(255), error_message());
+end catch
+go
+exec sp_ins_media_has_borrower 20, 19, '10/25/2021'
+go
+exec sp_ins_media_has_borrower 20, 19, '10/01/2021', '10/10/2021'
+go
+
+
+
+-- #2
+drop proc if exists sp_upd_media_has_borrower
+go
+create proc sp_upd_media_has_borrower
+	@media_has_borrower_id int, @media_id int, @borrower_id int, @borrow_date datetime2,
+	@return_date datetime2 = null
+as
+begin try
+update media_has_borrower
+set media_id = 18, borrower_id = 18, borrow_date = getdate(), return_date = getdate()
+where media_has_borrower_id = @media_has_borrower_id;
+end try
+begin catch
+	print 'An error occured. Row was not inserted.';
+	print 'Error number: ' + convert(varchar, error_number());
+	print 'Error message: ' + convert(varchar(255), error_message());
+end catch
+go
+exec sp_upd_media_has_borrower 19, 1, 11, '1/1/2021', '2/2/2021';
+go
+exec sp_upd_media_has_borrower 19, 1, 11, '1/1/2021';
+go
+exec sp_upd_media_has_borrower 19, 1, 1111, '1/1/2021', '2/2/2021';
+go

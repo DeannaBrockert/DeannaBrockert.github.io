@@ -5,7 +5,8 @@
 * 10/14/21	DBrockert		Fixed typo on status table, changed CHAR(10) to NCHAR(60), started insert statements.
 * 10/15/21	DBrockert		Added and ran insert statements. 
 * 10/22/21	DBrockert		Add sql for reports. 
-*
+* 10/25/21  DBrockert		Add ins and upd sp's for media_has_borrower.
+* 10/27/21	DBrockert		Add ins, upd, and del sp's for artist, borrower, and media.
 ***************************************************************/
 
 -- drop & create database
@@ -376,4 +377,258 @@ go
 exec sp_upd_media_has_borrower 19, 1, 11, '1/1/2021';
 go
 exec sp_upd_media_has_borrower 19, 1, 1111, '1/1/2021', '2/2/2021';
+go
+
+grant exec on sp_upd_media_has_borrower to mediaUserBrockert
+
+
+
+
+-- Project 5
+
+-- #2
+-- artist insert
+drop proc if exists sp_ins_artist
+go
+create proc sp_ins_artist
+	@artist_name nvarchar(60), @artist_type_id int
+as
+begin try
+	insert into artist (artist_name, artist_type_id)
+	values 
+	(@artist_name, @artist_type_id)
+end try
+begin catch
+	print 'An error occured. Row was not inserted.';
+	print 'Error number: ' + convert(varchar, error_number());
+	print 'Error message: ' + convert(varchar(255), error_message());
+end catch
+go
+
+exec sp_ins_artist 'Billie Eilish', 1;
+go
+
+exec sp_ins_artist 'Billie Eilish', 111;
+go
+
+grant exec on sp_ins_artist to mediaUserBrockert;
+go
+
+-- artist update
+drop proc if exists sp_upd_artist
+go
+create proc sp_upd_artist
+	@artist_id int, @artist_name nvarchar(60), @artist_type_id int
+as
+begin try
+	update artist
+	set artist_name = @artist_name, artist_type_id = @artist_type_id
+	where artist_id = @artist_id
+end try
+begin catch
+	print 'An error occured. Row was not updated.';
+	print 'Error number: ' + convert(varchar, error_number());
+	print 'Error message: ' + convert(varchar(255), error_message());
+end catch
+go
+
+exec sp_upd_artist 21, 'Billie Eilish update 2', 1;
+go
+
+exec sp_upd_artist 21, 'Billie Eilish update 2', 1111;
+go
+
+grant exec on sp_upd_artist to mediaUserBrockert;
+go
+
+-- delete artist
+drop proc if exists sp_del_artist
+go
+create proc sp_del_artist
+	@artist_id int
+as
+begin try
+	delete artist
+	where artist_id = @artist_id
+end try
+begin catch
+	print 'An error occured. Row was not deleted.';
+	print 'Error number: ' + convert(varchar, error_number());
+	print 'Error message: ' + convert(varchar(255), error_message());
+end catch
+go
+
+exec sp_del_artist 21;
+go
+
+exec sp_del_artist 1;
+go
+
+grant exec on sp_del_artist to mediaUserBrockert;
+go
+
+-- #3
+-- insert borrower
+drop proc if exists sp_ins_borrower
+go
+create proc sp_ins_borrower
+	@first_name nvarchar(60),@last_name nvarchar(60), @phone_number nvarchar(60)
+as
+begin try
+	insert into borrower (first_name, last_name, phone_number)
+	values (@first_name, @last_name, @phone_number)
+end try
+begin catch
+	print 'An error occured. Row was not inserted.';
+	print 'Error number: ' + convert(varchar, error_number());
+	print 'Error message: ' + convert(varchar(255), error_message());
+end catch
+go
+
+exec sp_ins_borrower 'John', 'Smith', '208-111-1111';
+go
+
+exec sp_ins_borrower 'Jane', 'Doe', null;
+go
+
+grant exec on sp_ins_artist to mediaUserBrockert;
+go
+
+
+-- update borrower
+drop proc if exists sp_upd_borrower
+go
+create proc sp_upd_borrower
+	@borrower_id int, @first_name nvarchar(60),@last_name nvarchar(60), @phone_number nvarchar(60)
+as
+begin try
+	update borrower
+	set first_name = @first_name, last_name = @last_name, phone_number = @phone_number
+	where borrower_id = @borrower_id
+end try
+begin catch
+	print 'An error occured. Row was not updated.';
+	print 'Error number: ' + convert(varchar, error_number());
+	print 'Error message: ' + convert(varchar(255), error_message());
+end catch
+go
+
+exec sp_upd_borrower 20, 'John', 'Smith', '208-111-1111';
+go
+
+exec sp_upd_borrower 20, 'Jane', 'Doe', null;
+go
+
+grant exec on sp_upd_borrower to mediaUserBrockert;
+go
+
+
+-- delete borrower
+drop proc if exists sp_del_borrower
+go
+create proc sp_del_borrower
+	@borrower_id int
+as
+begin try
+	delete borrower
+	where borrower_id = @borrower_id
+end try
+begin catch
+	print 'An error occured. Row was not deleted.';
+	print 'Error number: ' + convert(varchar, error_number());
+	print 'Error message: ' + convert(varchar(255), error_message());
+end catch
+go
+
+exec sp_del_borrower 21;
+go
+
+exec sp_del_borrower 1;
+go
+
+grant exec on sp_del_borrower to mediaUserBrockert;
+go
+
+
+
+-- #4
+-- insert media
+drop proc if exists sp_ins_media
+go
+create proc sp_ins_media
+	@media_name nvarchar(60), @release_date date, @genre_id int, @status_id int, @media_type_id int
+as
+begin try
+	insert into media (media_name, release_date, genre_id, status_id, media_type_id)
+	values (@media_name, @release_date, @genre_id, @status_id, @media_type_id)
+end try
+begin catch
+	print 'An error occured. Row was not inserted.';
+	print 'Error number: ' + convert(varchar, error_number());
+	print 'Error message: ' + convert(varchar(255), error_message());
+end catch
+go
+
+exec sp_ins_media 'Hocus Pocus', '01-04-2009', 1, 1, 2;
+go
+
+exec sp_ins_media 'Billie Eilish', '', 111, 1, 1;
+go
+
+grant exec on sp_ins_media to mediaUserBrockert;
+go
+
+
+-- update media
+drop proc if exists sp_upd_media
+go
+create proc sp_upd_media
+	@media_id int, @media_name nvarchar(60), @release_date date, @genre_id int, @status_id int, @media_type_id int
+as
+begin try
+	update media
+	set media_name = @media_name, release_date = @release_date, genre_id = @genre_id, status_id = @status_id, media_type_id = @media_type_id
+	where media_id = @media_id
+end try
+begin catch
+	print 'An error occured. Row was not updated.';
+	print 'Error number: ' + convert(varchar, error_number());
+	print 'Error message: ' + convert(varchar(255), error_message());
+end catch
+go
+
+exec sp_upd_media 21, 'Hocus Pocus update', '01-13-2009', 2, 1, 1;
+go
+
+exec sp_upd_media 21, 'Hocus Pocus update', '01-13-2009', 2, 1, 1111;
+go
+
+grant exec on sp_upd_media to mediaUserBrockert;
+go
+
+
+-- delete media
+drop proc if exists sp_del_media
+go
+create proc sp_del_media
+	@media_id int
+as
+begin try
+	delete media
+	where media_id = @media_id
+end try
+begin catch
+	print 'An error occured. Row was not deleted.';
+	print 'Error number: ' + convert(varchar, error_number());
+	print 'Error message: ' + convert(varchar(255), error_message());
+end catch
+go
+
+exec sp_del_media 21;
+go
+
+exec sp_del_media 1;
+go
+
+grant exec on sp_del_media to mediaUserBrockert;
 go
